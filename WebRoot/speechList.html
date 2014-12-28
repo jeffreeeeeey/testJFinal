@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="GB18030">
+<title>Insert title here</title>
+</head>
+<body>
+speech list goes here.<br>
+<a href="/speech/addSpeech">add speech</a><br>
+
+<table border="1">
+	<tbody>
+		<tr>
+			<td>id</td>
+			<td>title</td>
+			<td>author</td>
+			<td>content</td>
+			<td>date</td>
+			<td>background</td>
+			<td>manage</td>
+		</tr>
+		<#list speechPage.getList() as x>
+		<tr>
+			<td>${x.id}</td>
+			<td style="text-align:left;">${x.title}</td>
+			<td style="text-align:left;">${x.author}</td>
+			<td style="text-align:left;">${x.content}</td>
+			<td style="text-align:left;">${x.date}</td>
+			<td style="text-align:left;">${x.background}</td>
+			<td style="text-align:left;">
+				<a href="/speech/delete/${x.id}">delete</a>
+				&nbsp;&nbsp;<a href="/blog/edit/${x.id}">edit</a>
+			</td>
+			</tr>
+		</#list>
+	</tbody>
+</table>
+</body>
+</html>

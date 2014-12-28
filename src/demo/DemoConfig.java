@@ -13,12 +13,12 @@ public class DemoConfig extends JFinalConfig {
 	@Override
 	public void configRoute(Routes me) {
 		me.add("/hello", HelloController.class);
-		
+		me.add("/speech", SpeechController.class);
 	}
 
 	@Override
 	public void configPlugin(Plugins me) {
-		C3p0Plugin cp = new C3p0Plugin("jdbc:mysql://localhost/db_name",
+		C3p0Plugin cp = new C3p0Plugin("jdbc:mysql://localhost:3306/great_speeches",
 				"root", "123456");
 		me.add(cp);
 		ActiveRecordPlugin arp = new ActiveRecordPlugin(cp);

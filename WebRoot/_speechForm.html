@@ -1,0 +1,27 @@
+<fieldset>
+			<legend><h1>add new speech</h1></legend>
+			<input type="hidden" name="" value="" />
+			<div>
+				<label>Title</label>
+				<input type="text" name="speech.title" value="${(speech.title)!}" />
+			</div>
+			<div>
+				<label>author</label>
+				<input type="text" name="speech.author" value="${(speech.author)!}">
+			</div>
+			<div>
+				<label>content</label>
+				<textarea name="speech.content" cols="80" rows="10">${(speech.content)!}</textarea>
+			</div>
+			<div>
+				<label>date</label>
+				<input type="text" name="speech.date" value="${(speech.date)!}" />
+			</div>
+			<div>
+				<label>background</label>
+				<textarea name="speech.background" cols="80" rows="5">${(speech.background)!}</textarea>
+			</div>
+			<div>
+				<input type="submit" value="submit" />
+			</div>
+		</fieldset>
