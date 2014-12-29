@@ -2,38 +2,29 @@
 <html>
 <head>
 <meta charset="GB18030">
-<title>Insert title here</title>
+<title>Great Speeches</title>
+<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap-combined.min.css" rel="stylesheet">	
+    <style type='text/css'>
+      body {
+        background-color: #CCC;
+      }
+    </style>
 </head>
 <body>
-speech list goes here.<br>
-<a href="/speech/addSpeech">add speech</a><br>
-
-<table border="1">
-	<tbody>
-		<tr>
-			<td>id</td>
-			<td>title</td>
-			<td>author</td>
-			<td>content</td>
-			<td>date</td>
-			<td>background</td>
-			<td>manage</td>
-		</tr>
-		<#list speechPage.getList() as x>
-		<tr>
-			<td>${x.id}</td>
-			<td style="text-align:left;">${x.title}</td>
-			<td style="text-align:left;">${x.author}</td>
-			<td style="text-align:left;">${x.content}</td>
-			<td style="text-align:left;">${x.date}</td>
-			<td style="text-align:left;">${x.background}</td>
-			<td style="text-align:left;">
-				<a href="/speech/delete/${x.id}">delete</a>
-				&nbsp;&nbsp;<a href="/blog/edit/${x.id}">edit</a>
-			</td>
-			</tr>
+	<div class='container'>
+	<#include "/include/navigator.html">
+		<div class='span8 main'>
+		    <#list speechPage.getList() as x>
+			<h2><a href="/speech/speechDetail/${x.id}">${x.title}</a></h2><br>
+			author:${x.author} &nbsp date:${x.date}<br>
+			<a href="/speech/delete/${x.id}">delete</a>
+			&nbsp;&nbsp;<a href="/speech/edit/${x.id}">edit</a><br>
 		</#list>
-	</tbody>
-</table>
+		</div>
+	<#include "/include/sidebar.html">
+	 
+
+
+</div>
 </body>
 </html>

@@ -19,9 +19,22 @@ public class SpeechController extends Controller {
 	}
 	public void edit() {
 		setAttr("speech", Speech.me.findById(getParaToInt()));
+		setAttr("action", "edit");
+		render("/addSpeech.html");
 	}
 	public void delete() {
 		Speech.me.deleteById(getParaToInt());
 		redirect("/speech");
 	}
+	
+	//@Before(SpeechValidator.class)
+	public void update(){
+		getModel(Speech.class).update();
+		redirect("/speech");
+	}
+	public void speechDetail(){
+		setAttr("speech", Speech.me.findById(getParaToInt()));
+		render("/speechDetail.html");
+	}
+	
 }

@@ -1,6 +1,15 @@
 <fieldset>
-			<legend><h1>add new speech</h1></legend>
-			<input type="hidden" name="" value="" />
+			<legend><h1>
+			<#if action == "add">
+			add new speech
+			<#else>
+			Edit speech
+			</#if>
+			</h1></legend>
+			
+			
+			
+			<input type="hidden" name="speech.id" value="${(speech.id)!}" />
 			<div>
 				<label>Title</label>
 				<input type="text" name="speech.title" value="${(speech.title)!}" />

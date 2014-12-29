@@ -8,16 +8,15 @@
 <body>
 ${action}<br>
 
-
-
 <div>
 	<#if action == "add">
 	<form action="/speech/save" method="post">
+	
+	<#else>
+	<form action="/speech/update" method="post">
 	</#if>
-	<#if action == "edit">
-	<form action="/speech/edit" method="post">
-	</#if>
-		<#include "_speechForm.html" >
+	
+	<#include "_speechForm.html" >
 	</form>
 </div>
 
