@@ -4,20 +4,30 @@
 <meta charset="GB18030">
 <script src="/js/jquery-1.4.4.min.js" type="text/javascript" ></script>
 <title>Insert title here</title>
+<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap-combined.min.css" rel="stylesheet">	
+    <style type='text/css'>
+      body {
+        background-color: #CCC;
+      }
+    </style>
 </head>
 <body>
-${action}<br>
 
-<div>
-	<#if action == "add">
-	<form action="/speech/save" method="post">
-	
-	<#else>
-	<form action="/speech/update" method="post">
-	</#if>
-	
-	<#include "_speechForm.html" >
-	</form>
+
+<div class='container'>
+	<#include "/include/navigator.html">
+	<div class='span8 main'>
+		<#if action == "add">
+		<form action="/speech/save" method="post">
+		
+		<#else>
+		<form action="/speech/update" method="post">
+		</#if>
+		
+		<#include "_speechForm.html" >
+		</form>
+	</div>
+	<#include "include/sidebar.html">
 </div>
 
 </body>

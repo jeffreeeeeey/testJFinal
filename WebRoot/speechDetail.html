@@ -3,9 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Speech Detail</title>
+<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap-combined.min.css" rel="stylesheet">	
+    <style type='text/css'>
+      body {
+        background-color: #CCC;
+      }
+    </style>
 </head>
 <body>
-<table>
+<div class='container'>
+	<#include "/include/navigator.html">
+	<div class='span8 main'>
+	<table>
 	<tbody>
 		<tr>
 			<td>
@@ -24,5 +33,11 @@
 		</tr>
 	</tbody>
 </table>
+	</div>
+	<#include "include/sidebar.html">
+
+</div>
+
+
 </body>
 </html>
