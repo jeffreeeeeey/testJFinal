@@ -14,8 +14,10 @@ public class SpeechController extends Controller {
 	}
 	@Before(SpeechValidator.class)
 	public void save() {
-		getModel(Speech.class).save();
-		redirect("/speech");
+		Speech speech = getModel(Speech.class);
+		speech.save();
+		Integer id = speech.getInt("id");
+		redirect("/speech/speechDetail/" + id);
 	}
 	public void edit() {
 		setAttr("speech", Speech.me.findById(getParaToInt()));
@@ -30,7 +32,8 @@ public class SpeechController extends Controller {
 	//@Before(SpeechValidator.class)
 	public void update(){
 		getModel(Speech.class).update();
-		redirect("/speech");
+		Integer id = getModel(Speech.class).getInt("id");
+		redirect("/speech/speechDetail/" + id);
 	}
 	public void speechDetail(){
 		setAttr("speech", Speech.me.findById(getParaToInt()));
