@@ -3,7 +3,7 @@
 <head>
 <meta charset="GB18030">
 <title>Great Speeches</title>
-<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap-combined.min.css" rel="stylesheet">	
+ <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap-combined.min.css" rel="stylesheet">	
     <style type='text/css'>
       body {
         background-color: #CCC;
@@ -21,12 +21,11 @@
 			author:${x.author} &nbsp date:${x.date}<br>
 			<a href="/speech/delete/${x.id}">delete</a>
 			&nbsp;&nbsp;<a href="/speech/edit/${x.id}">edit</a><br>
-		</#list>
+			</#list>
 		</div>
 	<#include "/include/sidebar.html">
-	 
-
 
 </div>
+<#include "/include/footer.html">
 </body>
 </html>

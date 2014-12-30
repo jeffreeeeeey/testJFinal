@@ -48,17 +48,17 @@
 						<!-- <td><textarea name="speech.content" cols="160" rows="10">${(speech.content)!}</textarea></td> -->
 						<td>
 						<!-- 加载编辑器的容器 -->
-						    <script id="container" name="content" type="text/plain">
-        						这里写你的初始化内容
+					    <script id="container1" name="speech.content" type="text/plain">
+        					${(speech.content)!}
     						</script>
-						    <!-- 配置文件 -->
-						    <script type="text/javascript" src="/include/ueditor/ueditor.config.js"></script>
-						    <!-- 编辑器源码文件 -->
-						    <script type="text/javascript" src="/include/ueditor/ueditor.all.js"></script>
-						    <!-- 实例化编辑器 -->
-						    <script type="text/javascript">
-						        var ue = UE.getEditor('container');
-						    </script>
+						<!-- 配置文件 -->
+					    <script type="text/javascript" src="/include/ueditor/ueditor.config.js"></script>
+					    <!-- 编辑器源码文件 -->
+					    <script type="text/javascript" src="/include/ueditor/ueditor.all.js"></script>
+					    <!-- 实例化编辑器 -->
+					    <script type="text/javascript">
+					        var ue = UE.getEditor('container1');
+					    </script>
 						</td>
 					</tr>
 					<tr>
@@ -67,7 +67,16 @@
 					</tr>
 					<tr>
 						<td><label>background</label></td>
-						<td><textarea name="speech.background" cols="80" rows="5">${(speech.background)!}</textarea></td>
+						<td>
+						<!-- 加载编辑器的容器 -->
+					    <script id="container2" name="speech.background" type="text/plain">
+        					${(speech.background)!}
+    						</script>
+						
+					    <script type="text/javascript">
+					        var ue = UE.getEditor('container2');
+					    </script>
+						</td>
 					</tr>
 					<tr>
 						<td><input type="submit" value="submit" /></td>
@@ -77,6 +86,7 @@
 			</table>
 		</fieldset>
 		</form>
+		
 	</div>
 	<#include "include/sidebar.html">
 </div>
