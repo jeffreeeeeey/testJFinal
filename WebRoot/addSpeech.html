@@ -9,22 +9,73 @@
       body {
         background-color: #CCC;
       }
+      #content {
+      }
     </style>
 </head>
 <body>
 
-
 <div class='container'>
 	<#include "/include/navigator.html">
-	<div class='span8 main'>
+	<div id='content' class='span9 main'>
 		<#if action == "add">
 		<form action="/speech/save" method="post">
 		
 		<#else>
 		<form action="/speech/update" method="post">
 		</#if>
-		
-		<#include "_speechForm.html" >
+		<fieldset>
+			<legend><h1>
+			<#if action == "add">
+			add new speech
+			<#else>
+			Edit speech
+			</#if>
+			</h1></legend>
+			<input type="hidden" name="speech.id" value="${(speech.id)!}" />
+			<table>
+				<tbody>
+					<tr>
+						<td><label>Title</label></td>
+						<td><input type="text" name="speech.title" value="${(speech.title)!}" /></td>
+					</tr>
+					<tr>
+						<td><label>author</label></td>
+						<td><input type="text" name="speech.author" value="${(speech.author)!}"></td>
+					</tr>
+					<tr>
+						<td><label>content</label></td>
+						<!-- <td><textarea name="speech.content" cols="160" rows="10">${(speech.content)!}</textarea></td> -->
+						<td>
+						<!-- 加载编辑器的容器 -->
+						    <script id="container" name="content" type="text/plain">
+        						这里写你的初始化内容
+    						</script>
+						    <!-- 配置文件 -->
+						    <script type="text/javascript" src="/include/ueditor/ueditor.config.js"></script>
+						    <!-- 编辑器源码文件 -->
+						    <script type="text/javascript" src="/include/ueditor/ueditor.all.js"></script>
+						    <!-- 实例化编辑器 -->
+						    <script type="text/javascript">
+						        var ue = UE.getEditor('container');
+						    </script>
+						</td>
+					</tr>
+					<tr>
+						<td><label>date</label></td>
+						<td><input type="text" name="speech.date" value="${(speech.date)!}" /></td>
+					</tr>
+					<tr>
+						<td><label>background</label></td>
+						<td><textarea name="speech.background" cols="80" rows="5">${(speech.background)!}</textarea></td>
+					</tr>
+					<tr>
+						<td><input type="submit" value="submit" /></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</fieldset>
 		</form>
 	</div>
 	<#include "include/sidebar.html">

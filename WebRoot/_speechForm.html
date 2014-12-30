@@ -1,36 +1,38 @@
 <fieldset>
-			<legend><h1>
-			<#if action == "add">
-			add new speech
-			<#else>
-			Edit speech
-			</#if>
-			</h1></legend>
-			
-			
-			
-			<input type="hidden" name="speech.id" value="${(speech.id)!}" />
-			<div>
-				<label>Title</label>
-				<input type="text" name="speech.title" value="${(speech.title)!}" />
-			</div>
-			<div>
-				<label>author</label>
-				<input type="text" name="speech.author" value="${(speech.author)!}">
-			</div>
-			<div>
-				<label>content</label>
-				<textarea name="speech.content" cols="80" rows="10">${(speech.content)!}</textarea>
-			</div>
-			<div>
-				<label>date</label>
-				<input type="text" name="speech.date" value="${(speech.date)!}" />
-			</div>
-			<div>
-				<label>background</label>
-				<textarea name="speech.background" cols="80" rows="5">${(speech.background)!}</textarea>
-			</div>
-			<div>
-				<input type="submit" value="submit" />
-			</div>
-		</fieldset>
+	<legend><h1>
+	<#if action == "add">
+	add new speech
+	<#else>
+	Edit speech
+	</#if>
+	</h1></legend>
+	<input type="hidden" name="speech.id" value="${(speech.id)!}" />
+	<table>
+		<tbody>
+			<tr>
+				<td><label>Title</label></td>
+				<td><input type="text" name="speech.title" value="${(speech.title)!}" /></td>
+			</tr>
+			<tr>
+				<td><label>author</label></td>
+				<td><input type="text" name="speech.author" value="${(speech.author)!}"></td>
+			</tr>
+			<tr>
+				<td><label>content</label></td>
+				<td><textarea name="speech.content" cols="80" rows="10">${(speech.content)!}</textarea></td>
+			</tr>
+			<tr>
+				<td><label>date</label></td>
+				<td><input type="text" name="speech.date" value="${(speech.date)!}" /></td>
+			</tr>
+			<tr>
+				<td><label>background</label></td>
+				<td><textarea name="speech.background" cols="80" rows="5">${(speech.background)!}</textarea></td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="submit" /></td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+</fieldset>

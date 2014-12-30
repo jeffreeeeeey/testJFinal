@@ -8,12 +8,14 @@
       body {
         background-color: #CCC;
       }
+      #content {
+      }
     </style>
 </head>
 <body>
 	<div class='container'>
 	<#include "/include/navigator.html">
-		<div class='span8 main' background-color:#ffffff>
+		<div id='content' class='span8 main' background-color:#ffffff>
 		    <#list speechPage.getList() as x>
 			<h2><a href="/speech/speechDetail/${x.id}">${x.title}</a></h2><br>
 			author:${x.author} &nbsp date:${x.date}<br>
