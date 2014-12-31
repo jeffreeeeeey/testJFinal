@@ -9,11 +9,28 @@
         background-color: #CCC;
       }
     </style>
+ <link href="/js/video-js/video-js.css" rel="stylesheet">
+<script src="/js/video-js/video.js"></script>
+<script>
+  videojs.options.flash.swf = "/js/video-js/video-js.swf"
+</script>
 </head>
 <body>
 <div class='container'>
 	<#include "/include/navigator.html">
 	<div class='span8 main'>
+	<div>
+	<video id="really-cool-video" class="video-js vjs-default-skin" controls
+ preload="auto" width="640" height="264" poster="really-cool-video-poster.jpg"
+ data-setup='{}'>
+  <source src="/video/SampleVIDEO1.mp4" type='video/mp4' />
+  <p class="vjs-no-js">
+    To view this video please enable JavaScript, and consider upgrading to a web browser
+    that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+  </p>
+</video>
+
+	</div>
 	<table>
 	<tbody>
 		<tr>
@@ -39,6 +56,7 @@
 		</tr>
 	</tbody>
 </table>
+
 	</div>
 	<#include "include/sidebar.html">
 
