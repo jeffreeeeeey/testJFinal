@@ -14,11 +14,14 @@
 <script>
   videojs.options.flash.swf = "/js/video-js/video-js.swf"
 </script>
+
+
 </head>
-<body>
+<body onload = "getCurrentTime('testAudio', 'currentTimeLabel2')">
 <div class='container'>
 	<#include "/include/navigator.html">
 	<div class='span8 main'>
+	<!-- 
 	<div>
 	<video id="really-cool-video" class="video-js vjs-default-skin" controls
 		preload="auto" width="640" height="264" poster="really-cool-video-poster.jpg"
@@ -30,18 +33,27 @@
 		</p>
 	</video>
 	</div>
-	<br>
+	
+	
 	<div>
 	<audio id="really-cool-audio" class="video-js vjs-default-skin" controls
 		preload="auto"  poster="really-cool-video-poster.jpg"
 		data-setup='{"height":"100", "width":"500"}'>
-	  	<source src="/audio/blueEyes.mp3" type='audio/mp3' />
+	  	<source src="/video/gettysburg-address-jd.mp3" type='audio/mp3' />
 		<p class="vjs-no-js">
 		    To view this video please enable JavaScript, and consider upgrading to a web browser
 		    that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
 		</p>
 	</audio>
 	</div>
+	<br>
+	<input type="button" id="getTimeBtn" value="current time" onclick="getCurrentTime('really-cool-audio')">&nbsp;&nbsp;current time:<label id="currentTimeLabel">00:00</label>
+	 -->
+	<div>
+	<audio id="testAudio" src="/video/gettysburg-address-jd.mp3" controls></audio> 
+	<input type="button" id="getTimeBtn2" value="current time" onclick="getCurrentTime('testAudio', 'currentTimeLabel2')">&nbsp;&nbsp;current time:<label id="currentTimeLabel2">00:00</label>
+	</div>
+	
 	<table>
 	<tbody>
 		<tr>
@@ -72,7 +84,15 @@
 	<#include "include/sidebar.html">
 
 </div>
-
-
+<!-- get player's current time -->
+<script>
+	function getCurrentTime(mediaId, labelId){
+	
+		var x = document.getElementById(mediaId);
+		var timeLabel = document.getElementById(labelId);
+		timeLabel.innerText = x.currentTime;
+	}
+	setInterval("getCurrentTime('testAudio', 'currentTimeLabel2')", "1000");
+</script>
 </body>
 </html>
