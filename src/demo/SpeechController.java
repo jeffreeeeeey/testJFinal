@@ -1,5 +1,6 @@
 package demo;
 
+import com.demo.player.LrcParser;
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 
@@ -37,6 +38,12 @@ public class SpeechController extends Controller {
 	}
 	public void speechDetail(){
 		setAttr("speech", Speech.me.findById(getParaToInt()));
+		LrcParser lp = new LrcParser();
+		try {
+			lp.parser("e:\\javaEE\\WorkSpace\\testJFinal\\WebRoot\\video\\gettysburg-address-jd.lrc");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		render("/speechDetail.html");
 	}
 	
