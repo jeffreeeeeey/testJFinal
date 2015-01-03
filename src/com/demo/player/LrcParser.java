@@ -17,7 +17,7 @@ public class LrcParser {
 	
 	private long currentTime = 0;
 	private String currentContent = null;
-	private HashMap<Long, String> maps = new HashMap<Long, String>();
+	private HashMap<String, String> maps = new HashMap<String, String>();
 	
 	private InputStream readLrcFile(String path) throws FileNotFoundException {
 		File f = new File(path);
@@ -44,12 +44,18 @@ public class LrcParser {
 
 	private void parserLine(String line) {
 		//get the title of speech
-		if (line.startsWith("[ti:")) {
-			String title = line.substring(4, line.length() - 1);
-			System.out.println("title: " + title);
-		}else if (line.startsWith("[ar:")) {
-			String artist = line.substring(4, line.length() - 1);
-			System.out.println("reader: " + artist);
+		if (line.startsWith("[title:")) {
+			String title = line.substring(7, line.length() - 1);
+			lrcInfo.setTitle(title);
+			//System.out.println("title: " + title);
+		}else if (line.startsWith("[reader:")) {
+			String reader = line.substring(8, line.length() - 1);
+			lrcInfo.setReader(reader);
+//			System.out.println("reader: " + reader);
+		}else if (line.startsWith("[author:")) {
+			String author = line.substring(8, line.length() - 1);
+			lrcInfo.setAuthor(author);
+//			System.out.println("author: " + author);
 		}else {
 			String reg = "\\[(\\d{2}:\\d{2}\\.\\d{2})\\]";
 			Pattern pattern = Pattern.compile(reg);
@@ -63,7 +69,7 @@ public class LrcParser {
 				int groupCount = matcher.groupCount();
 				for (int i = 0; i < groupCount; i++) {
 					String timeString = matcher.group(i);
-					System.out.println("i:" + i + " timeString:" + timeString);
+					//System.out.println("i:" + i + " timeString:" + timeString);
 					if (i == 0) {
 						currentTime = strToLong(timeString);
 					}
@@ -74,13 +80,16 @@ public class LrcParser {
 						currentContent = contentStrings[i];
 					}
 				}
-				maps.put(currentTime, currentContent);
-				System.out.println("put currentTime:" + currentTime + " currentContent:" + currentContent);
-			}
+				String currentTimeString = String.valueOf(currentTime);
+				maps.put(currentTimeString, currentContent);
+				//System.out.println("put currentTime:" + currentTime + " currentContent:" + currentContent);
+			}//end of while
 		}
 	}
 	private long strToLong(String timeString) {
-		
+		if (timeString.startsWith("[") && timeString.endsWith("]")) {
+			timeString = timeString.substring(1, timeString.length() - 1);
+		}
 		String[] s = timeString.split(":");
 		int min = Integer.parseInt(s[0]);
 		String[] ss = s[1].split("\\.");

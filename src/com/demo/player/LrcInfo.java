@@ -5,13 +5,20 @@ import java.util.Hashtable;
 
 public class LrcInfo {
 	private String title;
+	private String author;
 	private String reader;
-	private HashMap<Long, String> infos;
+	public HashMap<String, String> infos;
 	public String getTitle() {
 		return title;
 	}
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	public String getAuthor() {
+		return author;
+	}
+	public void setAuthor(String author) {
+		this.author = author;
 	}
 	public String getReader() {
 		return reader;
@@ -19,10 +26,10 @@ public class LrcInfo {
 	public void setReader(String reader) {
 		this.reader = reader;
 	}
-	public HashMap<Long,String> getInfos() {
+	public HashMap<String,String> getInfos() {
 		return infos;
 	}
-	public void setInfos(HashMap<Long, String> infos) {
+	public void setInfos(HashMap<String, String> infos) {
 		this.infos = infos;
 	}
 }

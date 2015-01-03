@@ -1,5 +1,9 @@
 package demo;
 
+import java.util.HashMap;
+import java.util.Iterator;
+
+import com.demo.player.LrcInfo;
 import com.demo.player.LrcParser;
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
@@ -36,15 +40,23 @@ public class SpeechController extends Controller {
 		Integer id = getModel(Speech.class).getInt("id");
 		redirect("/speech/speechDetail/" + id);
 	}
-	public void speechDetail(){
-		setAttr("speech", Speech.me.findById(getParaToInt()));
+	public void speechDetail() throws Exception{
+		
 		LrcParser lp = new LrcParser();
-		try {
-			lp.parser("e:\\javaEE\\WorkSpace\\testJFinal\\WebRoot\\video\\gettysburg-address-jd.lrc");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		LrcInfo lrcInfo = new LrcInfo();
+		lrcInfo = lp.parser("e:\\javaEE\\WorkSpace\\testJFinal\\WebRoot\\video\\gettysburg-address-jd.lrc");
+		HashMap<String, String> map = lrcInfo.getInfos();
+		Iterator<String> iterator = map.keySet().iterator();
+		while (iterator.hasNext()) {
+			String key = iterator.next() ;
+			String value = map.get(key);
+			System.out.println("key:" + key + "--> value:" + value);
+		
+		setAttr("lrc", lrcInfo);
+		setAttr("infoMap", map);
+		setAttr("speech", Speech.me.findById(getParaToInt()));
+		
 		render("/speechDetail.html");
+		}
 	}
-	
 }
