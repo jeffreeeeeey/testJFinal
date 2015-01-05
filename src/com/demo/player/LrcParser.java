@@ -17,7 +17,7 @@ public class LrcParser {
 	
 	private long currentTime = 0;
 	private String currentContent = null;
-	private HashMap<String, String> maps = new HashMap<String, String>();
+	private HashMap<Long, String> maps = new HashMap<Long, String>();
 	
 	private InputStream readLrcFile(String path) throws FileNotFoundException {
 		File f = new File(path);
@@ -80,8 +80,8 @@ public class LrcParser {
 						currentContent = contentStrings[i];
 					}
 				}
-				String currentTimeString = String.valueOf(currentTime);
-				maps.put(currentTimeString, currentContent);
+				
+				maps.put(currentTime, currentContent);
 				//System.out.println("put currentTime:" + currentTime + " currentContent:" + currentContent);
 			}//end of while
 		}

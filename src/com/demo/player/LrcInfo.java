@@ -7,7 +7,7 @@ public class LrcInfo {
 	private String title;
 	private String author;
 	private String reader;
-	public HashMap<String, String> infos;
+	public HashMap<Long, String> infos;
 	public String getTitle() {
 		return title;
 	}
@@ -26,10 +26,10 @@ public class LrcInfo {
 	public void setReader(String reader) {
 		this.reader = reader;
 	}
-	public HashMap<String,String> getInfos() {
+	public HashMap<Long, String> getInfos() {
 		return infos;
 	}
-	public void setInfos(HashMap<String, String> infos) {
+	public void setInfos(HashMap<Long, String> infos) {
 		this.infos = infos;
 	}
 }

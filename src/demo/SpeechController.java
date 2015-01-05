@@ -1,5 +1,6 @@
 package demo;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -45,18 +46,22 @@ public class SpeechController extends Controller {
 		LrcParser lp = new LrcParser();
 		LrcInfo lrcInfo = new LrcInfo();
 		lrcInfo = lp.parser("e:\\javaEE\\WorkSpace\\testJFinal\\WebRoot\\video\\gettysburg-address-jd.lrc");
-		HashMap<String, String> map = lrcInfo.getInfos();
-		Iterator<String> iterator = map.keySet().iterator();
+		HashMap<Long, String> map = lrcInfo.getInfos();
+		Iterator<Long> iterator = map.keySet().iterator();
+		ArrayList<Long> keyArrayList = new ArrayList<Long>();
+		
 		while (iterator.hasNext()) {
-			String key = iterator.next() ;
+			Long key = iterator.next() ;
+			keyArrayList.add(key);
 			String value = map.get(key);
 			System.out.println("key:" + key + "--> value:" + value);
+		}
 		
 		setAttr("lrc", lrcInfo);
 		setAttr("infoMap", map);
 		setAttr("speech", Speech.me.findById(getParaToInt()));
 		
 		render("/speechDetail.html");
-		}
+		
 	}
 }
