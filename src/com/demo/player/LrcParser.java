@@ -95,6 +95,6 @@ public class LrcParser {
 		String[] ss = s[1].split("\\.");
 		int sec = Integer.parseInt(ss[0]);
 		int mill = Integer.parseInt(ss[1]);
-		return min * 60 * 1000 + sec * 1000 + mill * 10;
+		return (min * 60 * 1000 + sec * 1000 + mill * 10)/1000;
 	}
 }
