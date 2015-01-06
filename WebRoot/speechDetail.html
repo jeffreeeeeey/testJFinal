@@ -17,7 +17,7 @@
 
 
 </head>
-<body onload = "getCurrentTime('testAudio', 'currentTimeLabel2')">
+<body>
 <div class='container'>
 	<#include "/include/navigator.html">
 	<div class='span8 main'>
@@ -51,7 +51,8 @@
 	 -->
 	<div>
 	<audio id="testAudio" src="/video/gettysburg-address-jd.mp3" controls></audio> 
-	<input type="button" id="getTimeBtn2" value="current time" onclick="getCurrentTime('testAudio', 'currentTimeLabel2')">&nbsp;&nbsp;current time:<label id="currentTimeLabel2">00:00</label>
+	<input type="button" id="startBtn" value="start" onclick="startMark()">&nbsp;&nbsp;current time:<label id="currentTimeLabel2">00:00</label>
+	<input type="button" id="stopBtn" value="stop" onclick="stopMark()">
 	</div>
 	
 	<table>
@@ -79,7 +80,7 @@
 			</#list>
 			keys<br>-->
 			<#list keyArrayList as x>
-				<li>${x}--${map.get(x)}</li>
+				<li>${x}--<label id="${x}" name="line">${map.get(x)}</label></li>
 				
 			</#list>
 			</td>
@@ -99,13 +100,25 @@
 </div>
 <!-- get player's current time -->
 <script>
+	var lines = document.getElementsByName("line");
+	var n = lines.length;
+	var linesArray = new Array();
+	for ( var i in lines) {
+		var id = i.id;
+		linesArray.push(id);
+	}
+	alert(linesArray.length);
+	var a;
 	function getCurrentTime(mediaId, labelId){
 	
 		var x = document.getElementById(mediaId);
 		var timeLabel = document.getElementById(labelId);
-		timeLabel.innerText = x.currentTime;
+		var cTime = x.currentTime;
+		timeLabel.innerText = cTime;
+		
+		
 	}
-	setInterval("getCurrentTime('testAudio', 'currentTimeLabel2')", "1000");
+	//setInterval("getCurrentTime('testAudio', 'currentTimeLabel2')", "1000");
 </script>
 </body>
 </html>

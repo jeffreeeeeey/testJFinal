@@ -55,7 +55,7 @@ public class SpeechController extends Controller {
 			Long key = iterator.next() ;
 			keyArrayList.add(key);
 			String value = map.get(key);
-			System.out.println("key:" + key + "--> value:" + value);
+			//System.out.println("key:" + key + "--> value:" + value);
 		}
 		Collections.sort(keyArrayList);
 		setAttr("lrc", lrcInfo);
