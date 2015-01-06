@@ -68,14 +68,19 @@
 		</tr>
 		<tr>
 			<td>
-			<!-- ${speech.content} -->
+			<!-- ${speech.content} 
 			<#assign map = infoMap>
 			<#assign keys = map?keys>
-			<!-- <#list keys as key> <li>${key}</li> </#list> -->
+			<!-- <#list keys as key> <li>${key}</li> </#list>
 			<#list keys as key>
 				<#if map.get(key)??>
-				${key} --  ${map.get(key)}</br>
+				<li>${key} --  ${map.get(key)}</li>
 				</#if>
+			</#list>
+			keys<br>-->
+			<#list keyArrayList as x>
+				<li>${x}--${map.get(x)}</li>
+				
 			</#list>
 			</td>
 		</tr>
