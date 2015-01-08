@@ -1,5 +1,6 @@
 package demo;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -9,6 +10,8 @@ import com.demo.player.LrcInfo;
 import com.demo.player.LrcParser;
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
+import com.jfinal.kit.PathKit;
+import com.jfinal.upload.UploadFile;
 
 public class SpeechController extends Controller {
 	public void index(){
@@ -21,8 +24,19 @@ public class SpeechController extends Controller {
 	}
 	@Before(SpeechValidator.class)
 	public void save() {
+		//Handle the upload file
+		UploadFile uploadFile = getFile();
+		//String uploadDir = File.separator + "upload" + File.separator;
+		//String path_tmp = PathKit.getWebRootPath() + uploadDir;
+		//System.out.println(path_tmp);
+		//UploadFile uploadFile = getFile("lrc", path_tmp);
+		
 		Speech speech = getModel(Speech.class);
 		speech.save();
+		
+		
+		
+		
 		Integer id = speech.getInt("id");
 		redirect("/speech/speechDetail/" + id);
 	}
