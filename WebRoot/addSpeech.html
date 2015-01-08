@@ -19,10 +19,10 @@
 	<#include "/include/navigator.html">
 	<div id='content' class='span9 main'>
 		<#if action == "add">
-		<form action="/speech/save" method="post">
+		<form action="/speech/save" method="post" enctype="multipart/form-data">
 		
 		<#else>
-		<form action="/speech/update" method="post">
+		<form action="/speech/update" method="post" enctype="multipart/form-data">
 		</#if>
 		<fieldset>
 			<legend><h1>
@@ -76,6 +76,14 @@
 					        var ue = UE.getEditor('container2');
 					    </script>
 						</td>
+					</tr>
+					<tr>
+						<td>lrc</td>
+						<td><input type="file" name="lrc" size="15" maxlength="100"></td>
+					</tr>
+					<tr>
+						<td>Audio</td>
+						<td><input type="file" name="audio" size="15" maxlength="100"></td>
 					</tr>
 					<tr>
 						<td><input type="submit" value="submit" /></td>
