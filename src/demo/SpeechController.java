@@ -25,7 +25,12 @@ public class SpeechController extends Controller {
 	@Before(SpeechValidator.class)
 	public void save() {
 		//Handle the upload file
-		UploadFile uploadFile = getFile();
+		UploadFile uf = getFile();
+		File file = uf.getFile();
+		String pathString = file.getPath();
+		System.out.println(pathString);
+		
+		
 		//String uploadDir = File.separator + "upload" + File.separator;
 		//String path_tmp = PathKit.getWebRootPath() + uploadDir;
 		//System.out.println(path_tmp);
@@ -33,9 +38,6 @@ public class SpeechController extends Controller {
 		
 		Speech speech = getModel(Speech.class);
 		speech.save();
-		
-		
-		
 		
 		Integer id = speech.getInt("id");
 		redirect("/speech/speechDetail/" + id);
