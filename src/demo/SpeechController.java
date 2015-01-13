@@ -28,8 +28,9 @@ public class SpeechController extends Controller {
 		UploadFile uf = getFile();
 		File file = uf.getFile();
 		String pathString = file.getPath();
+		String fileName = file.getName();
 		System.out.println(pathString);
-		
+		System.out.println(fileName);
 		
 		//String uploadDir = File.separator + "upload" + File.separator;
 		//String path_tmp = PathKit.getWebRootPath() + uploadDir;
@@ -40,6 +41,7 @@ public class SpeechController extends Controller {
 		speech.save();
 		
 		Integer id = speech.getInt("id");
+		Speech.me.findById(id).set("lrc", fileName).update();
 		redirect("/speech/speechDetail/" + id);
 	}
 	public void edit() {
@@ -49,6 +51,7 @@ public class SpeechController extends Controller {
 	}
 	public void delete() {
 		Speech.me.deleteById(getParaToInt());
+		
 		redirect("/speech");
 	}
 	
@@ -59,10 +62,15 @@ public class SpeechController extends Controller {
 		redirect("/speech/speechDetail/" + id);
 	}
 	public void speechDetail() throws Exception{
-		
+		Speech speech = Speech.me.findById(getParaToInt());
+		String fileNameString = speech.getStr("lrc");
+		if (fileNameString == null) {
+			fileNameString = "gettysburg-address-jd.lrc";
+		}
+		String filePath = "WebRoot\\updoad\\" + fileNameString;
 		LrcParser lp = new LrcParser();
 		LrcInfo lrcInfo = new LrcInfo();
-		lrcInfo = lp.parser("WebRoot\\video\\gettysburg-address-jd.lrc");
+		lrcInfo = lp.parser(filePath);
 		HashMap<Long, String> map = lrcInfo.getInfos();
 		Iterator<Long> iterator = map.keySet().iterator();
 		ArrayList<Long> keyArrayList = new ArrayList<Long>();
