@@ -67,7 +67,7 @@ public class SpeechController extends Controller {
 		if (fileNameString == null) {
 			fileNameString = "gettysburg-address-jd.lrc";
 		}
-		String filePath = "WebRoot\\updoad\\" + fileNameString;
+		String filePath = "WebRoot\\upload\\" + fileNameString;
 		LrcParser lp = new LrcParser();
 		LrcInfo lrcInfo = new LrcInfo();
 		lrcInfo = lp.parser(filePath);
