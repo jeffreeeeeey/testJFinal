@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="GB18030">
+<title>Insert title here</title>
+<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap-combined.min.css" rel="stylesheet">	
+    <style type='text/css'>
+      body {
+        background-color: #CCC;
+      }
+      #content {
+      }
+    </style>
+</head>
+<body>
+<div class='container'>
+	<#include "/include/navigator.html">
+		<div id='content' class='span8 main' background-color:#ffffff>
+		    <form action="">
+		    	<fieldset>
+		    		<legend>Login</legend>
+		    		<table>
+		    			<tbody>
+		    				<tr>
+		    					<td>user name</td>
+		    					<td><input type="text" name="user"></td>
+		    				</tr>
+		    				<tr>
+		    					<td>password</td>
+		    					<td><input type="text" name="password"></td>
+		    				</tr>
+		    				<tr>
+		    					<td>&nbsp;</td>
+		    					<td><input type="submit" value="submit"></td>
+		    				</tr>
+		    			</tbody>
+		    		</table>
+		    	</fieldset>
+		    </form>
+		</div>
+	<#include "/include/sidebar.html">
+
+</div>
+<#include "/include/footer.html">
+</body>
+</html>

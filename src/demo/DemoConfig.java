@@ -14,6 +14,7 @@ public class DemoConfig extends JFinalConfig {
 	public void configRoute(Routes me) {
 		me.add("/hello", HelloController.class);
 		me.add("/speech", SpeechController.class);
+		me.add("/user", UserController.class);
 	}
 
 	@Override
