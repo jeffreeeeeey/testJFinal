@@ -12,12 +12,12 @@ public class UserController extends Controller {
 		String name = getPara("name");
 		String password = getPara("password");
 		String sql = "SELECT * FROM user WHERE name = '" + name + "' AND password = '" + password + "';";
-		String sql2 = "SELECT * FROM user";
-		int n = 0;
+		String sql2 = "SELECT * FROM speech";
+		int n = 1;
 		try {
-			List<User> users = User.us.find(sql2);
-			n = users.size();
-			if (users.size() > 0) {
+			//List<User> users = User.us.find(sql2);
+			//n = users.size();
+			if (n > 0) {
 				getSession().setAttribute("username", name);
 				redirect("/speech");
 			}else {
